@@ -8,5 +8,25 @@
   <%= @blogpost.contents %>
 </div>
 
+<br/>
+
+<h3>
+Comments
+</h3>
+
+<div class="commenting">
+  <% @bpcomments.each do |comment| %>
+    <tr>
+      <b><%= comment.author %></b>
+      <br/>
+      <td><%= comment.commenttext %></td>
+      <br/><br/>
+      <td><%= link_to 'Edit Comment', edit_comment_path(comment) %></td>
+      <br/>
+      <td><%= link_to 'Remove Comment', comment, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+    </tr>
+  <% end %>
+</div>
+
 <%= link_to 'Edit', edit_blogpost_path(@blogpost) %> |
 <%= link_to 'Back', blogposts_path %>
